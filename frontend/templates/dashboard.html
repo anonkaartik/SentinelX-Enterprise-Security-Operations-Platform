@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}SentinelX Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>SentinelX</h2>
+            <p>ESOP v1.0</p>
+        </div>
+
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Live Events</a>
+            <a href="#">Threat Hunting</a>
+            <a href="#">Threat Intelligence</a>
+            <a href="#">MITRE ATT&CK</a>
+            <a href="#">Reports</a>
+            <a href="#">AI Assistant</a>
+            <a href="#">Settings</a>
+        </nav>
+
+    </aside>
+
+    <main class="content">
+
+        <header class="topbar">
+
+            <div class="search">
+
+                <input
+                    type="text"
+                    placeholder="Search alerts, incidents or IOCs..."
+                >
+
+            </div>
+
+            <div class="top-actions">
+
+                <span>🔔</span>
+
+                <span>Administrator</span>
+
+            </div>
+
+        </header>
+
+        <section class="workspace">
+
+            <h1>Enterprise Security Dashboard</h1>
+
+            <p>
+                SentinelX Enterprise Security Operations Platform
+            </p>
+
+        </section>
+
+    </main>
+
+</div>
+
+{% endblock %}
