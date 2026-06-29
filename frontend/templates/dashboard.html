@@ -2,43 +2,47 @@
 
 {% block title %}SentinelX Dashboard{% endblock %}
 
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
 {% block content %}
 
 <div class="dashboard">
 
     <aside class="sidebar">
+
         <div class="logo">
             <h2>SentinelX</h2>
-            <p>ESOP v1.0</p>
+            <span>Enterprise Security</span>
         </div>
 
         <nav>
+
             <a href="#">Dashboard</a>
             <a href="#">Live Events</a>
             <a href="#">Threat Hunting</a>
             <a href="#">Threat Intelligence</a>
             <a href="#">MITRE ATT&CK</a>
+            <a href="#">Incident Response</a>
             <a href="#">Reports</a>
             <a href="#">AI Assistant</a>
             <a href="#">Settings</a>
+
         </nav>
 
     </aside>
 
-    <main class="content">
+    <main class="main-content">
 
         <header class="topbar">
 
-            <div class="search">
+            <input
+                type="text"
+                placeholder="Search..."
+            >
 
-                <input
-                    type="text"
-                    placeholder="Search alerts, incidents or IOCs..."
-                >
-
-            </div>
-
-            <div class="top-actions">
+            <div class="profile">
 
                 <span>🔔</span>
 
@@ -48,12 +52,31 @@
 
         </header>
 
+        <section class="cards">
+
+            <div class="card">
+                <h3>Threats</h3>
+                <h1>0</h1>
+            </div>
+
+            <div class="card">
+                <h3>Incidents</h3>
+                <h1>0</h1>
+            </div>
+
+            <div class="card">
+                <h3>Risk Score</h3>
+                <h1>0%</h1>
+            </div>
+
+        </section>
+
         <section class="workspace">
 
-            <h1>Enterprise Security Dashboard</h1>
+            <h2>Security Operations Center</h2>
 
             <p>
-                SentinelX Enterprise Security Operations Platform
+                Live monitoring modules will appear here.
             </p>
 
         </section>
