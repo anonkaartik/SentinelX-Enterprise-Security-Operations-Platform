@@ -1,88 +1,43 @@
-{% extends "base.html" %}
+<aside class="sidebar">
 
-{% block title %}SentinelX Dashboard{% endblock %}
+    <div class="logo-section">
 
-{% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
-{% endblock %}
+        <h1>SentinelX</h1>
 
-{% block content %}
+        <span>Enterprise Security</span>
 
-<div class="dashboard">
+        <small>Version 1.0.0</small>
 
-    <aside class="sidebar">
+    </div>
 
-        <div class="logo">
-            <h2>SentinelX</h2>
-            <span>Enterprise Security</span>
-        </div>
+    <nav class="menu">
 
-        <nav>
+        <a class="active" href="#">Dashboard</a>
 
-            <a href="#">Dashboard</a>
-            <a href="#">Live Events</a>
-            <a href="#">Threat Hunting</a>
-            <a href="#">Threat Intelligence</a>
-            <a href="#">MITRE ATT&CK</a>
-            <a href="#">Incident Response</a>
-            <a href="#">Reports</a>
-            <a href="#">AI Assistant</a>
-            <a href="#">Settings</a>
+        <a href="#">Live Events</a>
 
-        </nav>
+        <a href="#">Threat Hunting</a>
 
-    </aside>
+        <a href="#">Threat Intelligence</a>
 
-    <main class="main-content">
+        <a href="#">MITRE ATT&CK</a>
 
-        <header class="topbar">
+        <a href="#">Incident Response</a>
 
-            <input
-                type="text"
-                placeholder="Search..."
-            >
+        <a href="#">Reports</a>
 
-            <div class="profile">
+        <a href="#">AI Assistant</a>
 
-                <span>🔔</span>
+        <a href="#">Settings</a>
 
-                <span>Administrator</span>
+    </nav>
 
-            </div>
+    <div class="system-info">
 
-        </header>
+        <p>🟢 Platform Online</p>
 
-        <section class="cards">
+        <small>Build 2026.01</small>
 
-            <div class="card">
-                <h3>Threats</h3>
-                <h1>0</h1>
-            </div>
+    </div>
 
-            <div class="card">
-                <h3>Incidents</h3>
-                <h1>0</h1>
-            </div>
-
-            <div class="card">
-                <h3>Risk Score</h3>
-                <h1>0%</h1>
-            </div>
-
-        </section>
-
-        <section class="workspace">
-
-            <h2>Security Operations Center</h2>
-
-            <p>
-                Live monitoring modules will appear here.
-            </p>
-
-        </section>
-
-    </main>
-
-</div>
-
-{% endblock %}
+</aside>
