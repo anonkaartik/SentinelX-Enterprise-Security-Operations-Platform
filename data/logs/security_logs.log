@@ -1,0 +1,10 @@
+2026-07-07 10:42:11 INFO User admin logged in successfully from 192.168.1.20
+2026-07-07 10:43:55 WARNING Failed login attempt for user root from 203.0.113.45
+2026-07-07 10:44:28 HIGH Port scan detected from 198.51.100.25
+2026-07-07 10:45:50 CRITICAL Malware signature detected on workstation WS-014
+2026-07-07 10:47:19 INFO Scheduled backup completed successfully
+2026-07-07 10:48:01 WARNING Multiple failed SSH logins detected
+2026-07-07 10:49:32 HIGH Suspicious PowerShell execution detected
+2026-07-07 10:50:10 INFO User analyst logged out
+2026-07-07 10:51:44 CRITICAL Ransomware behavior detected on endpoint HR-PC-07
+2026-07-07 10:53:20 WARNING USB storage device connected

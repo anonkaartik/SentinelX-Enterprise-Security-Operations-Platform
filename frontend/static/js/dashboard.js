@@ -1,38 +1,126 @@
-const ctx=document.getElementById("threatChart");
+let threatChart
 
-if(ctx){
+async function loadDashboard(){
 
-new Chart(ctx,{
-type:"line",
-data:{
-labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
-datasets:[{
-label:"Threats",
-data:[18,32,27,45,38,55,41],
-tension:.4
-}]
-},
-options:{
-responsive:true,
-plugins:{
-legend:{
-display:false
+    const response=await fetch("/api/dashboard")
+
+    const data=await response.json()
+
+    document.getElementById("threatCounter").innerHTML=data.kpis.threats
+
+    document.getElementById("incidentCounter").innerHTML=data.kpis.incidents
+
+    document.getElementById("riskCounter").innerHTML=data.kpis.risk+"%"
+
+    document.getElementById("healthCounter").innerHTML=data.kpis.health+"%"
+
+    loadChart(data.timeline)
+
+    loadEvents(data.events)
+
+    loadAI(data.ai)
+
 }
+
+function loadChart(values){
+
+    const ctx=document.getElementById("threatChart")
+
+    if(threatChart){
+
+        threatChart.destroy()
+
+    }
+
+    threatChart=new Chart(ctx,{
+
+        type:"line",
+
+        data:{
+
+            labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+
+            datasets:[{
+
+                data:values,
+
+                borderWidth:3,
+
+                tension:.4,
+
+                fill:false
+
+            }]
+
+        },
+
+        options:{
+
+            responsive:true,
+
+            plugins:{
+
+                legend:{
+                    display:false
+                }
+
+            }
+
+        }
+
+    })
+
 }
+
+function loadEvents(events){
+
+    const tbody=document.querySelector(".events-table tbody")
+
+    tbody.innerHTML=""
+
+    events.forEach(event=>{
+
+        tbody.innerHTML+=`
+
+        <tr>
+
+        <td>${event.time}</td>
+
+        <td>${event.severity}</td>
+
+        <td>${event.event}</td>
+
+        </tr>
+
+        `
+
+    })
+
 }
-});
+
+function loadAI(ai){
+
+    const list=document.querySelector(".ai-list")
+
+    list.innerHTML=""
+
+    ai.forEach(item=>{
+
+        list.innerHTML+=`<li>${item}</li>`
+
+    })
 
 }
 
 function updateTime(){
 
-const now=new Date();
-
-document.getElementById("datetime").innerHTML=
-now.toLocaleString("en-IN");
+    document.getElementById("datetime").innerHTML=
+    new Date().toLocaleString("en-IN")
 
 }
 
-updateTime();
+setInterval(updateTime,1000)
 
-setInterval(updateTime,1000);
+updateTime()
+
+loadDashboard()
