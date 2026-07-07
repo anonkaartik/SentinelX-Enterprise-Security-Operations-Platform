@@ -1,10 +1,50 @@
-.cards{
+.dashboard-content{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
     gap:25px;
     padding:30px;
 }
 
-.workspace{
-    padding:0 30px 30px;
+.kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.analytics-grid,
+.bottom-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+.panel{
+    min-height:320px;
+}
+
+.placeholder{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:240px;
+    color:var(--text-secondary);
+    text-align:center;
+}
+
+.events-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+.events-table th,
+.events-table td{
+    padding:12px;
+    border-bottom:1px solid var(--border);
+    text-align:left;
+}
+
+.ai-list{
+    margin-top:20px;
+    padding-left:18px;
+    line-height:2;
 }

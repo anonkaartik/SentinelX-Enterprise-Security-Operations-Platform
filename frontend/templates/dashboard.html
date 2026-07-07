@@ -1,15 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}
-
-SentinelX Dashboard
-
-{% endblock %}
+{% block title %}SentinelX Dashboard{% endblock %}
 
 {% block styles %}
-
 <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
-
 {% endblock %}
 
 {% block content %}
@@ -17,66 +11,148 @@ SentinelX Dashboard
 <div class="dashboard">
 
     <aside class="sidebar">
-
         {% include "components/sidebar.html" %}
-
     </aside>
 
     <main class="main-content">
 
         {% include "components/navbar.html" %}
 
-        <section class="cards">
+        <div class="dashboard-content">
 
-            <div class="card">
+            <section class="kpi-grid">
 
-                <h3>Threats Detected</h3>
+                <div class="card">
+                    <h3>Threats Detected</h3>
+                    <h1 id="threatCounter">1284</h1>
+                    <p>+18 Today</p>
+                </div>
 
-                <h1>0</h1>
+                <div class="card">
+                    <h3>Active Incidents</h3>
+                    <h1 id="incidentCounter">37</h1>
+                    <p>3 Critical</p>
+                </div>
 
-            </div>
+                <div class="card">
+                    <h3>Risk Score</h3>
+                    <h1 id="riskCounter">92%</h1>
+                    <p>Enterprise Network</p>
+                </div>
 
-            <div class="card">
+                <div class="card">
+                    <h3>System Health</h3>
+                    <h1 id="healthCounter">100%</h1>
+                    <p>All Services Running</p>
+                </div>
 
-                <h3>Active Incidents</h3>
+            </section>
 
-                <h1>0</h1>
+            <section class="analytics-grid">
 
-            </div>
+                <div class="panel">
 
-            <div class="card">
+                    <h2>Threat Timeline</h2>
 
-                <h3>Risk Score</h3>
+                    <canvas id="threatChart"></canvas>
 
-                <h1>0%</h1>
+                </div>
 
-            </div>
+                <div class="panel">
 
-            <div class="card">
+                    <h2>Threat Map</h2>
 
-                <h3>System Health</h3>
+                    <div class="placeholder">
+                        🌍 Global Threat Map
+                        <br><br>
+                        Coming Soon
+                    </div>
 
-                <h1>100%</h1>
+                </div>
 
-            </div>
+            </section>
 
-        </section>
+            <section class="bottom-grid">
 
-        <section class="workspace">
+                <div class="panel">
 
-            <div class="panel">
+                    <h2>Recent Security Events</h2>
 
-                <h2>Security Operations Center</h2>
+                    <table class="events-table">
 
-                <p>
+                        <thead>
 
-                    Security widgets will appear here in upcoming phases.
+                            <tr>
 
-                </p>
+                                <th>Time</th>
 
-            </div>
+                                <th>Severity</th>
 
-        </section>
+                                <th>Event</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>10:42</td>
+
+                                <td>High</td>
+
+                                <td>Multiple Failed Logins</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>10:37</td>
+
+                                <td>Medium</td>
+
+                                <td>Port Scan Detected</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>10:31</td>
+
+                                <td>Critical</td>
+
+                                <td>Malware Signature Match</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="panel">
+
+                    <h2>AI Insights</h2>
+
+                    <ul class="ai-list">
+
+                        <li>Risk trend stable.</li>
+
+                        <li>No lateral movement detected.</li>
+
+                        <li>Review failed login attempts.</li>
+
+                        <li>Monitor suspicious IP activity.</li>
+
+                    </ul>
+
+                </div>
+
+            </section>
+
+        </div>
 
     </main>
 
@@ -85,6 +161,8 @@ SentinelX Dashboard
 {% endblock %}
 
 {% block scripts %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 
