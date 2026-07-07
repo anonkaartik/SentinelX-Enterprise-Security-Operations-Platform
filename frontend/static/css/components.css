@@ -1,0 +1,30 @@
+.card{
+    background:#151f33;
+    border:1px solid #2d3d59;
+    border-radius:14px;
+    padding:25px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#00d4ff;
+}
+
+.card h3{
+    color:#9ca3af;
+    font-size:15px;
+    margin-bottom:10px;
+}
+
+.card h1{
+    color:#ffffff;
+    font-size:34px;
+}
+
+.panel{
+    background:#151f33;
+    border:1px solid #2d3d59;
+    border-radius:14px;
+    padding:30px;
+}

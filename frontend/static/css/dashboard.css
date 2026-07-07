@@ -1,0 +1,10 @@
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    padding:30px;
+}
+
+.workspace{
+    padding:0 30px 30px;
+}

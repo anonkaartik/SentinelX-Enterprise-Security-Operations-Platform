@@ -1,43 +1,91 @@
-<aside class="sidebar">
+{% extends "base.html" %}
 
-    <div class="logo-section">
+{% block title %}
 
-        <h1>SentinelX</h1>
+SentinelX Dashboard
 
-        <span>Enterprise Security</span>
+{% endblock %}
 
-        <small>Version 1.0.0</small>
+{% block styles %}
 
-    </div>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
 
-    <nav class="menu">
+{% endblock %}
 
-        <a class="active" href="#">Dashboard</a>
+{% block content %}
 
-        <a href="#">Live Events</a>
+<div class="dashboard">
 
-        <a href="#">Threat Hunting</a>
+    <aside class="sidebar">
 
-        <a href="#">Threat Intelligence</a>
+        {% include "components/sidebar.html" %}
 
-        <a href="#">MITRE ATT&CK</a>
+    </aside>
 
-        <a href="#">Incident Response</a>
+    <main class="main-content">
 
-        <a href="#">Reports</a>
+        {% include "components/navbar.html" %}
 
-        <a href="#">AI Assistant</a>
+        <section class="cards">
 
-        <a href="#">Settings</a>
+            <div class="card">
 
-    </nav>
+                <h3>Threats Detected</h3>
 
-    <div class="system-info">
+                <h1>0</h1>
 
-        <p>🟢 Platform Online</p>
+            </div>
 
-        <small>Build 2026.01</small>
+            <div class="card">
 
-    </div>
+                <h3>Active Incidents</h3>
 
-</aside>
+                <h1>0</h1>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Risk Score</h3>
+
+                <h1>0%</h1>
+
+            </div>
+
+            <div class="card">
+
+                <h3>System Health</h3>
+
+                <h1>100%</h1>
+
+            </div>
+
+        </section>
+
+        <section class="workspace">
+
+            <div class="panel">
+
+                <h2>Security Operations Center</h2>
+
+                <p>
+
+                    Security widgets will appear here in upcoming phases.
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+{% endblock %}
