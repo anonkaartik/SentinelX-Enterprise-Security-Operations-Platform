@@ -1,9 +1,9 @@
 import random
 import time
 from datetime import datetime
-from pathlib import Path
 
-LOG_FILE=Path("data/logs/security_logs.log")
+from backend.config.settings import LOG_FILE
+from modules.log_generator.log_rotation import rotate_logs
 
 EVENTS=[
 
@@ -15,45 +15,31 @@ EVENTS=[
 
 ("CRITICAL","Malware signature detected"),
 
-("INFO","Scheduled backup completed"),
-
 ("WARNING","Multiple failed SSH logins detected"),
 
 ("HIGH","Suspicious PowerShell execution detected"),
 
-("INFO","User analyst logged out"),
-
 ("CRITICAL","Ransomware behavior detected"),
-
-("WARNING","USB storage device connected"),
-
-("HIGH","DNS tunneling detected"),
-
-("CRITICAL","Privilege escalation detected"),
 
 ("WARNING","Firewall policy modified"),
 
-("HIGH","Brute force attack detected"),
+("HIGH","DNS tunneling detected"),
 
-("INFO","VPN connection established")
+("CRITICAL","Privilege escalation detected")
 
 ]
 
 IPS=[
 
-"192.168.1.15",
+"192.168.1.12",
 
-"10.0.0.25",
+"10.0.0.15",
 
-"172.16.0.12",
+"172.16.5.22",
 
 "203.0.113.45",
 
-"198.51.100.22",
-
-"185.22.67.88",
-
-"91.240.118.120"
+"198.51.100.78"
 
 ]
 
@@ -65,11 +51,13 @@ def generate_log():
 
     timestamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    line=f"{timestamp} {severity} {message} from {ip}"
+    log=f"{timestamp} {severity} {message} from {ip}"
 
     with open(LOG_FILE,"a",encoding="utf-8") as file:
 
-        file.write(line+"\n")
+        file.write(log+"\n")
+
+    rotate_logs()
 
 def start_generator():
 
@@ -81,4 +69,4 @@ def start_generator():
 
 if __name__=="__main__":
 
-    start_generator()  
+    start_generator()

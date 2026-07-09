@@ -1,22 +1,19 @@
-from pathlib import Path
-
-LOG_FILE=Path("data/logs/security_logs.log")
+from backend.config.settings import LOG_FILE
 
 def read_logs():
 
     if not LOG_FILE.exists():
-        return []
 
-    logs=[]
+        return []
 
     with open(LOG_FILE,"r",encoding="utf-8") as file:
 
-        for line in file:
+        return [
 
-            line=line.strip()
+            line.strip()
 
-            if line:
+            for line in file
 
-                logs.append(line)
+            if line.strip()
 
-    return logs
+        ]

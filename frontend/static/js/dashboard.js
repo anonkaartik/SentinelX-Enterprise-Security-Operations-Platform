@@ -1,12 +1,12 @@
-let threatChart=null
+let threatChart = null
 
-async function loadDashboard(){
+async function loadDashboard() {
 
-    try{
+    try {
 
-        const response=await fetch("/api/dashboard")
+        const response = await fetch("/api/dashboard")
 
-        const data=await response.json()
+        const data = await response.json()
 
         updateKPIs(data.kpis)
 
@@ -20,33 +20,37 @@ async function loadDashboard(){
 
     }
 
-    catch(error){
+    catch (error) {
 
-        console.error(error)
+        console.error("Dashboard Error:", error)
 
     }
 
 }
 
-function updateKPIs(kpis){
+function updateKPIs(kpis) {
 
-    document.getElementById("threatCounter").textContent=kpis.threats
+    document.getElementById("threatCounter").textContent = kpis.threats
 
-    document.getElementById("incidentCounter").textContent=kpis.incidents
+    document.getElementById("incidentCounter").textContent = kpis.incidents
 
-    document.getElementById("riskCounter").textContent=kpis.risk+"%"
+    document.getElementById("riskCounter").textContent = kpis.risk + "%"
 
-    document.getElementById("healthCounter").textContent=kpis.health+"%"
+    document.getElementById("healthCounter").textContent = kpis.health + "%"
 
 }
 
-function updateChart(values){
+function updateChart(values) {
 
-    const ctx=document.getElementById("threatChart")
+    const ctx = document.getElementById("threatChart")
 
-    if(threatChart){
+    const labels = values.map((_, index) => index + 1)
 
-        threatChart.data.datasets[0].data=values
+    if (threatChart) {
+
+        threatChart.data.labels = labels
+
+        threatChart.data.datasets[0].data = values
 
         threatChart.update()
 
@@ -54,41 +58,81 @@ function updateChart(values){
 
     }
 
-    threatChart=new Chart(ctx,{
+    threatChart = new Chart(ctx, {
 
-        type:"line",
+        type: "line",
 
-        data:{
+        data: {
 
-            labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+            labels: labels,
 
-            datasets:[{
+            datasets: [
 
-                label:"Threats",
+                {
 
-                data:values,
+                    label: "Threat Activity",
 
-                borderWidth:3,
+                    data: values,
 
-                tension:.4,
+                    borderWidth: 3,
 
-                fill:false
+                    tension: 0.4,
 
-            }]
+                    fill: false
+
+                }
+
+            ]
 
         },
 
-        options:{
+        options: {
 
-            responsive:true,
+            responsive: true,
 
-            maintainAspectRatio:false,
+            maintainAspectRatio: false,
 
-            plugins:{
+            animation: {
 
-                legend:{
+                duration: 600
 
-                    display:false
+            },
+
+            plugins: {
+
+                legend: {
+
+                    display: false
+
+                }
+
+            },
+
+            scales: {
+
+                x: {
+
+                    title: {
+
+                        display: true,
+
+                        text: "Recent Events"
+
+                    }
+
+                },
+
+                y: {
+
+                    beginAtZero: true,
+
+                    title: {
+
+                        display: true,
+
+                        text: "Severity"
+
+                    }
 
                 }
 
@@ -100,15 +144,15 @@ function updateChart(values){
 
 }
 
-function updateEvents(events){
+function updateEvents(events) {
 
-    const table=document.getElementById("eventsTable")
+    const table = document.getElementById("eventsTable")
 
-    table.innerHTML=""
+    table.innerHTML = ""
 
-    events.slice(-10).reverse().forEach(event=>{
+    events.slice().reverse().forEach(event => {
 
-        table.innerHTML+=`
+        table.innerHTML += `
 
         <tr>
 
@@ -126,19 +170,19 @@ function updateEvents(events){
 
 }
 
-function updateAlerts(alerts){
+function updateAlerts(alerts) {
 
-    const table=document.getElementById("alertsTable")
+    const table = document.getElementById("alertsTable")
 
-    table.innerHTML=""
+    table.innerHTML = ""
 
-    alerts.slice(-10).reverse().forEach(alert=>{
+    alerts.slice().reverse().forEach(alert => {
 
-        table.innerHTML+=`
+        table.innerHTML += `
 
         <tr>
 
-            <td>${alert.time}</td>
+            <td>${alert.time || alert.timestamp}</td>
 
             <td>${alert.severity}</td>
 
@@ -152,25 +196,29 @@ function updateAlerts(alerts){
 
 }
 
-function updateAI(ai){
+function updateAI(ai) {
 
-    const list=document.querySelector(".ai-list")
+    const list = document.querySelector(".ai-list")
 
-    list.innerHTML=""
+    list.innerHTML = ""
 
-    ai.forEach(item=>{
+    ai.forEach(item => {
 
-        list.innerHTML+=`<li>${item}</li>`
+        list.innerHTML += `<li>${item}</li>`
 
     })
 
 }
 
-function updateClock(){
+function updateClock() {
 
-    document.getElementById("datetime").textContent=
+    const clock = document.getElementById("datetime")
 
-    new Date().toLocaleString("en-IN")
+    if (clock) {
+
+        clock.textContent = new Date().toLocaleString("en-IN")
+
+    }
 
 }
 
@@ -178,6 +226,6 @@ updateClock()
 
 loadDashboard()
 
-setInterval(updateClock,1000)
+setInterval(updateClock, 1000)
 
-setInterval(loadDashboard,3000)
+setInterval(loadDashboard, 3000)

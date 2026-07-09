@@ -31,3 +31,82 @@
 2026-07-09 19:55:23 HIGH Brute force attack detected from 10.0.0.25
 2026-07-09 19:55:25 HIGH DNS tunneling detected from 172.16.0.12
 2026-07-09 19:55:27 WARNING Multiple failed SSH logins detected from 185.22.67.88
+2026-07-09 20:36:37 INFO User admin logged in successfully from 203.0.113.45
+2026-07-09 20:36:42 WARNING Failed login attempt for user root from 192.168.1.12
+2026-07-09 20:36:44 WARNING Firewall policy modified from 10.0.0.15
+2026-07-09 20:36:49 INFO User admin logged in successfully from 203.0.113.45
+2026-07-09 20:36:51 CRITICAL Ransomware behavior detected from 198.51.100.78
+2026-07-09 20:36:54 WARNING Firewall policy modified from 192.168.1.12
+2026-07-09 20:36:57 HIGH Suspicious PowerShell execution detected from 10.0.0.15
+2026-07-09 20:37:00 CRITICAL Privilege escalation detected from 10.0.0.15
+2026-07-09 20:52:00 CRITICAL Ransomware behavior detected from 198.51.100.78
+2026-07-09 20:52:02 HIGH DNS tunneling detected from 203.0.113.45
+2026-07-09 20:52:07 WARNING Firewall policy modified from 203.0.113.45
+2026-07-09 20:52:09 WARNING Firewall policy modified from 198.51.100.78
+2026-07-09 20:52:14 CRITICAL Malware signature detected from 203.0.113.45
+2026-07-09 20:52:17 CRITICAL Ransomware behavior detected from 198.51.100.78
+2026-07-09 20:52:19 CRITICAL Ransomware behavior detected from 198.51.100.78
+2026-07-09 20:52:23 HIGH Suspicious PowerShell execution detected from 172.16.5.22
+2026-07-09 20:52:26 HIGH DNS tunneling detected from 198.51.100.78
+2026-07-09 20:52:30 CRITICAL Privilege escalation detected from 10.0.0.15
+2026-07-09 20:52:32 INFO User admin logged in successfully from 172.16.5.22
+2026-07-09 20:52:34 WARNING Failed login attempt for user root from 203.0.113.45
+2026-07-09 20:52:36 HIGH Port scan detected from 203.0.113.45
+2026-07-09 20:52:38 WARNING Firewall policy modified from 203.0.113.45
+2026-07-09 20:52:40 INFO User admin logged in successfully from 198.51.100.78
+2026-07-09 20:52:44 HIGH DNS tunneling detected from 192.168.1.12
+2026-07-09 20:52:48 CRITICAL Ransomware behavior detected from 192.168.1.12
+2026-07-09 20:52:53 HIGH DNS tunneling detected from 10.0.0.15
+2026-07-09 20:52:56 HIGH DNS tunneling detected from 172.16.5.22
+2026-07-09 20:52:58 HIGH Port scan detected from 172.16.5.22
+2026-07-09 20:53:03 CRITICAL Malware signature detected from 172.16.5.22
+2026-07-09 20:53:06 HIGH DNS tunneling detected from 172.16.5.22
+2026-07-09 20:53:09 HIGH Suspicious PowerShell execution detected from 203.0.113.45
+2026-07-09 20:53:11 WARNING Multiple failed SSH logins detected from 203.0.113.45
+2026-07-09 20:53:14 WARNING Firewall policy modified from 203.0.113.45
+2026-07-09 20:53:18 CRITICAL Ransomware behavior detected from 203.0.113.45
+2026-07-09 20:53:23 CRITICAL Ransomware behavior detected from 203.0.113.45
+2026-07-09 20:53:26 CRITICAL Privilege escalation detected from 192.168.1.12
+2026-07-09 20:53:30 WARNING Multiple failed SSH logins detected from 198.51.100.78
+2026-07-09 20:53:34 INFO User admin logged in successfully from 192.168.1.12
+2026-07-09 20:53:39 HIGH DNS tunneling detected from 172.16.5.22
+2026-07-09 20:53:42 CRITICAL Malware signature detected from 198.51.100.78
+2026-07-09 20:53:45 HIGH DNS tunneling detected from 203.0.113.45
+2026-07-09 20:53:50 HIGH DNS tunneling detected from 203.0.113.45
+2026-07-09 20:53:55 INFO User admin logged in successfully from 192.168.1.12
+2026-07-09 20:53:58 HIGH DNS tunneling detected from 10.0.0.15
+2026-07-09 20:54:02 WARNING Firewall policy modified from 203.0.113.45
+2026-07-09 20:54:07 WARNING Firewall policy modified from 203.0.113.45
+2026-07-09 20:54:10 CRITICAL Malware signature detected from 198.51.100.78
+2026-07-09 20:54:12 CRITICAL Privilege escalation detected from 172.16.5.22
+2026-07-09 20:54:17 CRITICAL Malware signature detected from 172.16.5.22
+2026-07-09 20:54:20 WARNING Firewall policy modified from 172.16.5.22
+2026-07-09 20:54:25 HIGH DNS tunneling detected from 198.51.100.78
+2026-07-09 20:54:28 INFO User admin logged in successfully from 192.168.1.12
+2026-07-09 20:54:31 HIGH Suspicious PowerShell execution detected from 172.16.5.22
+2026-07-09 20:54:34 WARNING Firewall policy modified from 192.168.1.12
+2026-07-09 20:54:36 WARNING Multiple failed SSH logins detected from 192.168.1.12
+2026-07-09 20:54:39 HIGH Port scan detected from 172.16.5.22
+2026-07-09 20:54:41 WARNING Multiple failed SSH logins detected from 192.168.1.12
+2026-07-09 20:54:43 WARNING Failed login attempt for user root from 198.51.100.78
+2026-07-09 20:54:47 HIGH Port scan detected from 192.168.1.12
+2026-07-09 20:54:49 CRITICAL Malware signature detected from 172.16.5.22
+2026-07-09 20:54:52 HIGH Port scan detected from 198.51.100.78
+2026-07-09 20:54:56 HIGH Port scan detected from 172.16.5.22
+2026-07-09 20:55:02 WARNING Failed login attempt for user root from 10.0.0.15
+2026-07-09 20:55:04 INFO User admin logged in successfully from 203.0.113.45
+2026-07-09 20:55:07 WARNING Multiple failed SSH logins detected from 172.16.5.22
+2026-07-09 20:55:11 CRITICAL Ransomware behavior detected from 198.51.100.78
+2026-07-09 20:55:16 INFO User admin logged in successfully from 172.16.5.22
+2026-07-09 20:55:18 HIGH Suspicious PowerShell execution detected from 10.0.0.15
+2026-07-09 20:55:20 WARNING Firewall policy modified from 10.0.0.15
+2026-07-09 20:55:24 HIGH Suspicious PowerShell execution detected from 172.16.5.22
+2026-07-09 20:55:27 WARNING Multiple failed SSH logins detected from 198.51.100.78
+2026-07-09 20:55:31 WARNING Failed login attempt for user root from 192.168.1.12
+2026-07-09 20:55:36 HIGH Port scan detected from 198.51.100.78
+2026-07-09 20:55:41 CRITICAL Ransomware behavior detected from 10.0.0.15
+2026-07-09 20:55:45 CRITICAL Privilege escalation detected from 198.51.100.78
+2026-07-09 20:55:47 INFO User admin logged in successfully from 172.16.5.22
+2026-07-09 20:55:49 INFO User admin logged in successfully from 172.16.5.22
+2026-07-09 20:55:51 WARNING Multiple failed SSH logins detected from 203.0.113.45
+2026-07-09 20:55:54 WARNING Multiple failed SSH logins detected from 192.168.1.12

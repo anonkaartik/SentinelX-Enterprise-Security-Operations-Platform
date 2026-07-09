@@ -4,9 +4,11 @@ from modules.threat_detection.risk_engine import calculate_risk
 
 def get_dashboard_data():
 
-    logs=process_logs()
+    from backend.config.settings import MAX_DASHBOARD_EVENTS
 
-    alerts=detect_threats()
+    logs=process_logs()[-MAX_DASHBOARD_EVENTS:]
+
+    alerts=detect_threats()[-20:]
 
     critical=0
 
@@ -40,23 +42,25 @@ def get_dashboard_data():
 
             warning+=1
 
-    timeline=[
+    timeline=[]
 
-        warning,
+    for event in logs:
 
-        high,
+        if event["severity"]=="INFO":
 
-        critical,
+            timeline.append(1)
 
-        warning+high,
+        elif event["severity"]=="WARNING":
 
-        high+critical,
+            timeline.append(2)
 
-        warning+critical,
+        elif event["severity"]=="HIGH":
 
-        len(alerts)
+            timeline.append(3)
 
-    ]
+    else:
+
+        timeline.append(4)
 
     return{
 
