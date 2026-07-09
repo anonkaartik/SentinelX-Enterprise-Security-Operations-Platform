@@ -24,26 +24,26 @@
 
                 <div class="card">
                     <h3>Threats Detected</h3>
-                    <h1 id="threatCounter">1284</h1>
-                    <p>+18 Today</p>
+                    <h1 id="threatCounter">0</h1>
+                    <p>Live Detection Engine</p>
                 </div>
 
                 <div class="card">
                     <h3>Active Incidents</h3>
-                    <h1 id="incidentCounter">37</h1>
-                    <p>3 Critical</p>
+                    <h1 id="incidentCounter">0</h1>
+                    <p>Critical Incidents</p>
                 </div>
 
                 <div class="card">
                     <h3>Risk Score</h3>
-                    <h1 id="riskCounter">92%</h1>
+                    <h1 id="riskCounter">0%</h1>
                     <p>Enterprise Network</p>
                 </div>
 
                 <div class="card">
                     <h3>System Health</h3>
                     <h1 id="healthCounter">100%</h1>
-                    <p>All Services Running</p>
+                    <p>Operational</p>
                 </div>
 
             </section>
@@ -63,9 +63,13 @@
                     <h2>Threat Map</h2>
 
                     <div class="placeholder">
+
                         🌍 Global Threat Map
+
                         <br><br>
+
                         Coming Soon
+
                     </div>
 
                 </div>
@@ -94,37 +98,7 @@
 
                         </thead>
 
-                        <tbody>
-
-                            <tr>
-
-                                <td>10:42</td>
-
-                                <td>High</td>
-
-                                <td>Multiple Failed Logins</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>10:37</td>
-
-                                <td>Medium</td>
-
-                                <td>Port Scan Detected</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>10:31</td>
-
-                                <td>Critical</td>
-
-                                <td>Malware Signature Match</td>
-
-                            </tr>
+                        <tbody id="eventsTable">
 
                         </tbody>
 
@@ -134,19 +108,43 @@
 
                 <div class="panel">
 
-                    <h2>AI Insights</h2>
+                    <h2>Threat Detection Summary</h2>
 
                     <ul class="ai-list">
 
-                        <li>Risk trend stable.</li>
-
-                        <li>No lateral movement detected.</li>
-
-                        <li>Review failed login attempts.</li>
-
-                        <li>Monitor suspicious IP activity.</li>
-
                     </ul>
+
+                </div>
+
+            </section>
+
+            <section>
+
+                <div class="panel">
+
+                    <h2>Security Alerts</h2>
+
+                    <table class="events-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Time</th>
+
+                                <th>Severity</th>
+
+                                <th>Threat Type</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="alertsTable">
+
+                        </tbody>
+
+                    </table>
 
                 </div>
 

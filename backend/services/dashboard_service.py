@@ -1,23 +1,18 @@
 from modules.log_ingestion.log_processor import process_logs
+from modules.threat_detection.threat_detector import detect_threats
+from modules.threat_detection.risk_engine import calculate_risk
 
 def get_dashboard_data():
 
     logs=process_logs()
 
-    threats=0
-    incidents=0
+    alerts=detect_threats()
+
+    critical=0
 
     events=[]
 
     for log in logs:
-
-        if log["severity"] in ["WARNING","HIGH","CRITICAL"]:
-
-            threats+=1
-
-        if log["severity"]=="CRITICAL":
-
-            incidents+=1
 
         events.append({
 
@@ -29,33 +24,55 @@ def get_dashboard_data():
 
         })
 
+        if log["severity"]=="CRITICAL":
+
+            critical+=1
+
     return{
 
         "kpis":{
 
-            "threats":threats,
+            "threats":len(alerts),
 
-            "incidents":incidents,
+            "incidents":critical,
 
-            "risk":78,
+            "risk":calculate_risk(),
 
-            "health":96
+            "health":100-calculate_risk()//2
 
         },
 
-        "timeline":[5,8,6,9,7,10,threats],
+        "timeline":[
+
+            len(alerts),
+
+            len(alerts)-1,
+
+            len(alerts),
+
+            len(alerts)+1,
+
+            len(alerts),
+
+            len(alerts)+2,
+
+            len(alerts)
+
+        ],
 
         "events":events,
 
+        "alerts":alerts,
+
         "ai":[
 
-            "Critical threats require immediate attention.",
+            "SOC analysis completed successfully.",
 
-            "Multiple authentication failures detected.",
+            f"{len(alerts)} threats detected.",
 
-            "Review PowerShell activity.",
+            f"{critical} critical incidents require investigation.",
 
-            "Investigate ransomware indicators."
+            "Threat intelligence correlation pending."
 
         ]
 

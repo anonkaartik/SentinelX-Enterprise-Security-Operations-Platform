@@ -18,6 +18,8 @@ async function loadDashboard(){
 
     loadEvents(data.events)
 
+    loadAlerts(data.alerts)
+
     loadAI(data.ai)
 
 }
@@ -33,65 +35,62 @@ function loadChart(values){
     }
 
     threatChart=new Chart(ctx,{
-
         type:"line",
-
         data:{
-
             labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
-
             datasets:[{
-
                 data:values,
-
                 borderWidth:3,
-
                 tension:.4,
-
                 fill:false
-
             }]
-
         },
-
         options:{
-
             responsive:true,
-
             plugins:{
-
                 legend:{
                     display:false
                 }
-
             }
-
         }
-
     })
 
 }
 
 function loadEvents(events){
 
-    const tbody=document.querySelector(".events-table tbody")
+    const tbody=document.getElementById("eventsTable")
 
     tbody.innerHTML=""
 
     events.forEach(event=>{
 
         tbody.innerHTML+=`
-
         <tr>
-
-        <td>${event.time}</td>
-
-        <td>${event.severity}</td>
-
-        <td>${event.event}</td>
-
+            <td>${event.time}</td>
+            <td>${event.severity}</td>
+            <td>${event.event}</td>
         </tr>
+        `
 
+    })
+
+}
+
+function loadAlerts(alerts){
+
+    const tbody=document.getElementById("alertsTable")
+
+    tbody.innerHTML=""
+
+    alerts.forEach(alert=>{
+
+        tbody.innerHTML+=`
+        <tr>
+            <td>${alert.time}</td>
+            <td>${alert.severity}</td>
+            <td>${alert.type}</td>
+        </tr>
         `
 
     })
@@ -115,6 +114,7 @@ function loadAI(ai){
 function updateTime(){
 
     document.getElementById("datetime").innerHTML=
+
     new Date().toLocaleString("en-IN")
 
 }
