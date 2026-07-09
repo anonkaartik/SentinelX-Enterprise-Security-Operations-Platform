@@ -1,103 +1,158 @@
-let threatChart
+let threatChart=null
 
 async function loadDashboard(){
 
-    const response=await fetch("/api/dashboard")
+    try{
 
-    const data=await response.json()
+        const response=await fetch("/api/dashboard")
 
-    document.getElementById("threatCounter").innerHTML=data.kpis.threats
+        const data=await response.json()
 
-    document.getElementById("incidentCounter").innerHTML=data.kpis.incidents
+        updateKPIs(data.kpis)
 
-    document.getElementById("riskCounter").innerHTML=data.kpis.risk+"%"
+        updateChart(data.timeline)
 
-    document.getElementById("healthCounter").innerHTML=data.kpis.health+"%"
+        updateEvents(data.events)
 
-    loadChart(data.timeline)
+        updateAlerts(data.alerts)
 
-    loadEvents(data.events)
+        updateAI(data.ai)
 
-    loadAlerts(data.alerts)
+    }
 
-    loadAI(data.ai)
+    catch(error){
+
+        console.error(error)
+
+    }
 
 }
 
-function loadChart(values){
+function updateKPIs(kpis){
+
+    document.getElementById("threatCounter").textContent=kpis.threats
+
+    document.getElementById("incidentCounter").textContent=kpis.incidents
+
+    document.getElementById("riskCounter").textContent=kpis.risk+"%"
+
+    document.getElementById("healthCounter").textContent=kpis.health+"%"
+
+}
+
+function updateChart(values){
 
     const ctx=document.getElementById("threatChart")
 
     if(threatChart){
 
-        threatChart.destroy()
+        threatChart.data.datasets[0].data=values
+
+        threatChart.update()
+
+        return
 
     }
 
     threatChart=new Chart(ctx,{
+
         type:"line",
+
         data:{
+
             labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+
             datasets:[{
+
+                label:"Threats",
+
                 data:values,
+
                 borderWidth:3,
+
                 tension:.4,
+
                 fill:false
+
             }]
+
         },
+
         options:{
+
             responsive:true,
+
+            maintainAspectRatio:false,
+
             plugins:{
+
                 legend:{
+
                     display:false
+
                 }
+
             }
+
         }
+
     })
 
 }
 
-function loadEvents(events){
+function updateEvents(events){
 
-    const tbody=document.getElementById("eventsTable")
+    const table=document.getElementById("eventsTable")
 
-    tbody.innerHTML=""
+    table.innerHTML=""
 
-    events.forEach(event=>{
+    events.slice(-10).reverse().forEach(event=>{
 
-        tbody.innerHTML+=`
+        table.innerHTML+=`
+
         <tr>
+
             <td>${event.time}</td>
+
             <td>${event.severity}</td>
+
             <td>${event.event}</td>
+
         </tr>
+
         `
 
     })
 
 }
 
-function loadAlerts(alerts){
+function updateAlerts(alerts){
 
-    const tbody=document.getElementById("alertsTable")
+    const table=document.getElementById("alertsTable")
 
-    tbody.innerHTML=""
+    table.innerHTML=""
 
-    alerts.forEach(alert=>{
+    alerts.slice(-10).reverse().forEach(alert=>{
 
-        tbody.innerHTML+=`
+        table.innerHTML+=`
+
         <tr>
+
             <td>${alert.time}</td>
+
             <td>${alert.severity}</td>
+
             <td>${alert.type}</td>
+
         </tr>
+
         `
 
     })
 
 }
 
-function loadAI(ai){
+function updateAI(ai){
 
     const list=document.querySelector(".ai-list")
 
@@ -111,16 +166,18 @@ function loadAI(ai){
 
 }
 
-function updateTime(){
+function updateClock(){
 
-    document.getElementById("datetime").innerHTML=
+    document.getElementById("datetime").textContent=
 
     new Date().toLocaleString("en-IN")
 
 }
 
-setInterval(updateTime,1000)
-
-updateTime()
+updateClock()
 
 loadDashboard()
+
+setInterval(updateClock,1000)
+
+setInterval(loadDashboard,3000)

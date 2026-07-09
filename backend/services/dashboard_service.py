@@ -10,6 +10,10 @@ def get_dashboard_data():
 
     critical=0
 
+    warning=0
+
+    high=0
+
     events=[]
 
     for log in logs:
@@ -28,6 +32,32 @@ def get_dashboard_data():
 
             critical+=1
 
+        elif log["severity"]=="HIGH":
+
+            high+=1
+
+        elif log["severity"]=="WARNING":
+
+            warning+=1
+
+    timeline=[
+
+        warning,
+
+        high,
+
+        critical,
+
+        warning+high,
+
+        high+critical,
+
+        warning+critical,
+
+        len(alerts)
+
+    ]
+
     return{
 
         "kpis":{
@@ -38,27 +68,11 @@ def get_dashboard_data():
 
             "risk":calculate_risk(),
 
-            "health":100-calculate_risk()//2
+            "health":max(0,100-calculate_risk()//2)
 
         },
 
-        "timeline":[
-
-            len(alerts),
-
-            len(alerts)-1,
-
-            len(alerts),
-
-            len(alerts)+1,
-
-            len(alerts),
-
-            len(alerts)+2,
-
-            len(alerts)
-
-        ],
+        "timeline":timeline,
 
         "events":events,
 
@@ -66,13 +80,13 @@ def get_dashboard_data():
 
         "ai":[
 
-            "SOC analysis completed successfully.",
-
             f"{len(alerts)} threats detected.",
 
-            f"{critical} critical incidents require investigation.",
+            f"{critical} critical incidents.",
 
-            "Threat intelligence correlation pending."
+            f"{high} high severity events.",
+
+            "Continuous monitoring active."
 
         ]
 
