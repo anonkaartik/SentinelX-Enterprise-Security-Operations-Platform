@@ -20,7 +20,7 @@ def get_dashboard_data():
 
         events.append({
 
-            "time":log["time"],
+            "time":log["timestamp"].split()[1],
 
             "severity":log["severity"],
 

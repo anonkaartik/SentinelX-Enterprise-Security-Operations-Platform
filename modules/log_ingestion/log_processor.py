@@ -1,16 +1,17 @@
 from modules.log_ingestion.log_parser import read_logs
+from modules.log_normalization.normalizer import normalize_log
 
 def process_logs():
 
-    parsed=[]
+    normalized=[]
 
     logs=read_logs()
 
-    for log in logs:
+    for line in logs:
 
-        parts=log.split()
+        parts=line.split()
 
-        parsed.append({
+        raw={
 
             "date":parts[0],
 
@@ -20,6 +21,12 @@ def process_logs():
 
             "message":" ".join(parts[3:])
 
-        })
+        }
 
-    return parsed
+        normalized.append(
+
+            normalize_log(raw)
+
+        )
+
+    return normalized

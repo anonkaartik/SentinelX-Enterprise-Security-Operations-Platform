@@ -2,17 +2,25 @@ from modules.log_ingestion.log_processor import process_logs
 
 RULES={
 
-"Failed login":"Brute Force Attempt",
+"failed login":"Brute Force",
 
-"Port scan":"Network Reconnaissance",
+"port scan":"Port Scan",
 
-"Malware":"Malware Infection",
+"malware":"Malware",
 
-"Ransomware":"Ransomware Activity",
+"ransomware":"Ransomware",
 
-"PowerShell":"Suspicious PowerShell Execution",
+"powershell":"PowerShell Abuse",
 
-"USB":"USB Device Connected"
+"usb":"USB Device",
+
+"dns tunneling":"DNS Tunneling",
+
+"privilege escalation":"Privilege Escalation",
+
+"firewall":"Firewall Modification",
+
+"brute force":"Brute Force"
 
 }
 
@@ -22,24 +30,32 @@ def detect_threats():
 
     alerts=[]
 
-    for log in logs:
+    for event in logs:
 
-        message=log["message"]
+        message=event["message"].lower()
 
         for keyword,threat in RULES.items():
 
-            if keyword.lower() in message.lower():
+            if keyword in message:
 
                 alerts.append({
 
-                    "time":log["time"],
+                    "timestamp":event["timestamp"],
 
-                    "severity":log["severity"],
+                    "severity":event["severity"],
 
                     "type":threat,
 
-                    "message":message
+                    "source":event["source"],
+
+                    "host":event["host"],
+
+                    "ip":event["ip"],
+
+                    "message":event["message"]
 
                 })
+
+                break
 
     return alerts
