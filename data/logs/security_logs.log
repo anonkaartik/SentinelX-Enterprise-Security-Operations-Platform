@@ -7,4 +7,27 @@
 2026-07-07 10:49:32 HIGH Suspicious PowerShell execution detected
 2026-07-07 10:50:10 INFO User analyst logged out
 2026-07-07 10:51:44 CRITICAL Ransomware behavior detected on endpoint HR-PC-07
-2026-07-07 10:53:20 WARNING USB storage device connected
+2026-07-07 10:53:20 WARNING USB storage device connected2026-07-09 19:52:52 CRITICAL Privilege escalation detected from 172.16.0.12
+2026-07-09 19:52:55 HIGH Suspicious PowerShell execution detected from 203.0.113.45
+2026-07-09 19:52:58 INFO VPN connection established from 91.240.118.120
+2026-07-09 19:53:03 HIGH DNS tunneling detected from 203.0.113.45
+2026-07-09 19:53:07 HIGH Brute force attack detected from 10.0.0.25
+2026-07-09 19:53:12 INFO User analyst logged out from 198.51.100.22
+2026-07-09 19:53:16 INFO VPN connection established from 172.16.0.12
+2026-07-09 19:53:21 HIGH Brute force attack detected from 10.0.0.25
+2026-07-09 19:53:26 INFO VPN connection established from 91.240.118.120
+2026-07-09 19:53:28 HIGH Brute force attack detected from 192.168.1.15
+2026-07-09 19:53:33 INFO User analyst logged out from 198.51.100.22
+2026-07-09 19:53:37 HIGH Suspicious PowerShell execution detected from 192.168.1.15
+2026-07-09 19:53:39 HIGH Brute force attack detected from 185.22.67.88
+2026-07-09 19:53:43 WARNING Failed login attempt for user root from 172.16.0.12
+2026-07-09 19:55:00 CRITICAL Malware signature detected from 172.16.0.12
+2026-07-09 19:55:04 WARNING USB storage device connected from 198.51.100.22
+2026-07-09 19:55:08 WARNING USB storage device connected from 91.240.118.120
+2026-07-09 19:55:12 INFO VPN connection established from 172.16.0.12
+2026-07-09 19:55:16 CRITICAL Ransomware behavior detected from 203.0.113.45
+2026-07-09 19:55:19 CRITICAL Ransomware behavior detected from 185.22.67.88
+2026-07-09 19:55:21 INFO User analyst logged out from 185.22.67.88
+2026-07-09 19:55:23 HIGH Brute force attack detected from 10.0.0.25
+2026-07-09 19:55:25 HIGH DNS tunneling detected from 172.16.0.12
+2026-07-09 19:55:27 WARNING Multiple failed SSH logins detected from 185.22.67.88
